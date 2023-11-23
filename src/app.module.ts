@@ -10,6 +10,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module'
 import { AuthModule } from './auth/auth.module';
 import { OrdersModule } from './orders/orders.module';
+import { ProductService } from './product/product.service';
+import { ProductController } from './product/product.controller';
+import { ProductModule } from './product/product.module';
+import { LocationModule } from './location/location.module';
 //test
 
 @Module({
@@ -22,8 +26,10 @@ import { OrdersModule } from './orders/orders.module';
       MongooseModule.forRoot(process.env.MONGODB_URI),
       AuthModule,
       OrdersModule,
+      ProductModule,
+      LocationModule,
      ],
-  controllers: [AppController],
-  providers: [AppService, ],
+  controllers: [AppController, ProductController],
+  providers: [AppService, ProductService, ],
 })
 export class AppModule {}
